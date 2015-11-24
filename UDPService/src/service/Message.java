@@ -24,7 +24,9 @@ public class Message<T extends Serializable> implements Serializable {
 			outStream = new ByteArrayOutputStream();
 			objOutStream = new ObjectOutputStream(outStream);
 			objOutStream.writeObject(content);
-			messageData = Base64.getEncoder().encodeToString(outStream.toByteArray());			
+			messageData = Base64.getEncoder().encodeToString(outStream.toByteArray());
+			outStream.close();
+			objOutStream.close();
 			outStream = new ByteArrayOutputStream();
 			objOutStream = new ObjectOutputStream(outStream);
 			objOutStream.writeObject(this);
